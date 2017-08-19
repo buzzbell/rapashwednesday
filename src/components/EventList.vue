@@ -7,16 +7,27 @@
     -->
     <div v-editable="blok" class="class-times__inner">
       <h2>
-        <!--
-        You can access every attribute you
-        define in the schema in the blok variable
-        -->
+        Upcoming Events
       </h2>
       <ul id="upcoming-events">
         <li v-for="event in this.blok.events">
-          {{ getEventDate(event.date) }}
-          {{ event.venue }}
-          {{ event.location }}
+          <div v-if="isUpcomingEvent(event)">
+            {{ getEventDate(event.date) }}
+            {{ event.venue }}
+            {{ event.location }}
+          </div>
+        </li>
+      </ul>
+      <h2>
+        Past Events
+      </h2>
+      <ul id="upcoming-events">
+        <li v-for="event in this.blok.events">
+          <div v-if="!isUpcomingEvent(event)">
+            {{ getEventDate(event.date) }}
+            {{ event.venue }}
+            {{ event.location }}
+          </div>
         </li>
       </ul>
     </div>
@@ -34,10 +45,15 @@ export default {
   methods: {
     getEventDate (eventDate) {
       let dateTime = new Date(eventDate)
-      let month = dateTime.getMonth()
+      let month = dateTime.getMonth() + 1
       let date = dateTime.getDate()
-      let year = dateTime.getYear()
+      let year = dateTime.getFullYear()
       return `${month}/${date}/${year}`
+    },
+    isUpcomingEvent (event) {
+      let eventDate = new Date(event.date)
+      let currentDate = new Date()
+      return eventDate > currentDate
     }
   }
 }
