@@ -14,7 +14,7 @@
       </h2>
       <ul id="upcoming-events">
         <li v-for="event in this.blok.events">
-          {{ event.date }}
+          {{ getEventDate(event.date) }}
           {{ event.venue }}
           {{ event.location }}
         </li>
@@ -29,6 +29,15 @@ export default {
   props: ['blok'],
   data () {
     return {
+    }
+  },
+  methods: {
+    getEventDate (eventDate) {
+      let dateTime = new Date(eventDate)
+      let month = dateTime.getMonth()
+      let date = dateTime.getDate()
+      let year = dateTime.getYear()
+      return `${month}/${date}/${year}`
     }
   }
 }
