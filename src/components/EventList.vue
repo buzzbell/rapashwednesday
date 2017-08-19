@@ -10,24 +10,20 @@
         Upcoming Events
       </h2>
       <ul id="upcoming-events">
-        <li v-for="event in this.blok.events">
-          <div v-if="isUpcomingEvent(event)">
-            {{ getEventDate(event.date) }}
-            {{ event.venue }}
-            {{ event.location }}
-          </div>
+        <li v-for="event in this.upcomingEvents">
+          {{ getEventDate(event.date) }}
+          {{ event.venue }}
+          {{ event.location }}
         </li>
       </ul>
       <h2>
         Past Events
       </h2>
       <ul id="upcoming-events">
-        <li v-for="event in this.blok.events">
-          <div v-if="!isUpcomingEvent(event)">
-            {{ getEventDate(event.date) }}
-            {{ event.venue }}
-            {{ event.location }}
-          </div>
+        <li v-for="event in this.pastEvents">
+          {{ getEventDate(event.date) }}
+          {{ event.venue }}
+          {{ event.location }}
         </li>
       </ul>
     </div>
@@ -40,9 +36,27 @@ export default {
   props: ['blok'],
   data () {
     return {
+      upcomingEvents: this.getUpcomingEvents(this.blok.events),
+      pastEvents: this.getPastEvents(this.blok.events)
     }
   },
   methods: {
+    getUpcomingEvents (events) {
+      let upcomingEvents = events.filter(function (event) {
+        let eventDate = new Date(event.date)
+        let currentDate = new Date()
+        return eventDate > currentDate
+      })
+      return upcomingEvents
+    },
+    getPastEvents (events) {
+      let pastEvents = events.filter(function (event) {
+        let eventDate = new Date(event.date)
+        let currentDate = new Date()
+        return eventDate < currentDate
+      })
+      return pastEvents
+    },
     getEventDate (eventDate) {
       let dateTime = new Date(eventDate)
       let month = dateTime.getMonth() + 1
