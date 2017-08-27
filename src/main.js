@@ -12,6 +12,7 @@ import ContentBlock from './components/ContentBlock.vue'
 import ContactForm from './components/ContactForm.vue'
 import EventList from './components/EventList.vue'
 import SocialLinks from './components/SocialLinks.vue'
+import TwoColumnMedia from './components/TwoColumnMedia.vue'
 
 Vue.component('root', Root)
 Vue.component('teaser', Teaser)
@@ -21,6 +22,7 @@ Vue.component('content-block', ContentBlock)
 Vue.component('contact-form', ContactForm)
 Vue.component('event-list', EventList)
 Vue.component('social-links', SocialLinks)
+Vue.component('two-column-media', TwoColumnMedia)
 Vue.use(StoryblokVue)
 
 /* eslint-disable no-new */
