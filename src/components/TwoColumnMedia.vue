@@ -7,11 +7,10 @@
             <img class="album-cover" :src="blok.left_media" :alt="blok.left_media_title">
           </div>
         </div>
-        <div class="download-album">
+        <div class="soundcloud-widget">
           <div class="download-album-cover">
             <img class="album-cover" :src="blok.right_media" :alt="blok.right_media_title">
           </div>
-
         </div>
       </div>
     </section>
