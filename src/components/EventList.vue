@@ -9,12 +9,21 @@
       <h2>
         Upcoming Events
       </h2>
-      <ul id="upcoming-events">
+
+     <table class="table" width="100%" id="upcoming-events">
+
+       <tr v-for="event in this.upcomingEvents">
+         <td class="table-cell">{{ getEventDate(event.date) }}</td>
+         <td class="table-cell">{{ event.venue }}</td>
+         <td>{{ event.location }}</td>
+       </tr>
+     </table>
+     <!--  <ul id="upcoming-events">
         <li v-for="event in this.upcomingEvents">
           {{ getEventDate(event.date) }}
           {{ event.venue }}
           {{ event.location }}
-        </li>
+        </li> -->
       </ul>
       <h2>
         Past Events
