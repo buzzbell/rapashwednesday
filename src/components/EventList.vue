@@ -6,35 +6,32 @@
     show the right component.
     -->
     <div v-editable="blok" class="class-times__inner">
-      <h2>
-        Upcoming Events
-      </h2>
-
-     <table class="table" width="100%" id="upcoming-events">
-
-       <tr v-for="event in this.upcomingEvents">
-         <td class="table-cell">{{ getEventDate(event.date) }}</td>
-         <td class="table-cell">{{ event.venue }}</td>
-         <td>{{ event.location }}</td>
-       </tr>
-     </table>
-     <!--  <ul id="upcoming-events">
-        <li v-for="event in this.upcomingEvents">
-          {{ getEventDate(event.date) }}
-          {{ event.venue }}
-          {{ event.location }}
-        </li> -->
-      </ul>
-      <h2>
-        Past Events
-      </h2>
-      <ul id="upcoming-events">
-        <li v-for="event in this.pastEvents">
-          {{ getEventDate(event.date) }}
-          {{ event.venue }}
-          {{ event.location }}
-        </li>
-      </ul>
+      <h4>Upcoming Shows</h4>
+      <table class="table left-align" width="100%" id="upcoming-events">
+        <tr>
+          <th>Date</th>
+          <th>Venue</th>
+          <th>Location</th>
+        </tr>
+        <tr v-for="event in this.upcomingEvents">
+          <td class="table-cell">{{ getEventDate(event.date) }}</td>
+          <td class="table-cell">{{ event.venue }}</td>
+          <td>{{ event.location }}</td>
+        </tr>
+      </table>
+      <h4>Shows that require a time machine</h4>
+      <table class="table left-align" width="100%" id="past-events">
+        <tr>
+          <th>Date</th>
+          <th>Venue</th>
+          <th>Location</th>
+        </tr>
+        <tr v-for="event in this.pastEvents">
+          <td class="table-cell">{{ getEventDate(event.date) }}</td>
+          <td class="table-cell">{{ event.venue }}</td>
+          <td>{{ event.location }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -86,6 +83,10 @@ export default {
 h1, h2 {
   font-size: 2rem;
 }
+h4 {
+  margin-top: 50px;
+  margin-bottom: 5px;
+}
 
 ul {
   list-style-type: none;
@@ -99,5 +100,23 @@ li {
 
 a {
   color: #42b983;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #BC4975;
+  th {
+    padding: 8px;
+  }
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  tr:first-child {
+    background-color: #BC4975;
+    color: white;
+  }
+  td {
+    padding: 8px;
+  }
 }
 </style>
