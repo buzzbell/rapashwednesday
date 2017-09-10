@@ -22,14 +22,16 @@ export default {
   }
 
   a {
-    color: #6e611e;
+    color: rgb(247, 221, 73);
     text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 
   ul {
     margin-top: -1.5rem;
     padding-left: 4rem;
-    padding-bottom: 2rem;
+    margin-bottom: 0;
     display: flex;
     justify-content: flex-end;
 

@@ -31,7 +31,7 @@ h1, h2, h3 {
 h1 {
   font-size: 4.5rem;
   text-shadow: -3px -3px rgb(247, 221, 73);
-  margin-bottom: 0;
+  margin: 0;
   text-align: center;
   letter-spacing: .25rem;
 }
