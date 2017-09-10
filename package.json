@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "deploy": "npm run deploy && netlify deploy"
+    "deploy": "npm run build && netlify deploy"
   },
   "dependencies": {
     "axios": "^0.16.2",

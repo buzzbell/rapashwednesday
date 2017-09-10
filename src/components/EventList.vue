@@ -1,12 +1,13 @@
 <template>
-  <div class="class-times">
+  <div class="event-list">
+    <a name="shows"></a>
     <!--
     The _editable attribute makes the next
     DOM-element clickable so the sidebar can
     show the right component.
     -->
     <div v-editable="blok" class="class-times__inner">
-      <h4>Upcoming Shows</h4>
+      <h3>Upcoming Shows</h3>
       <table class="table left-align" width="100%" id="upcoming-events">
         <tr>
           <th>Date</th>
@@ -19,7 +20,7 @@
           <td>{{ event.location }}</td>
         </tr>
       </table>
-      <h4>Shows that require a time machine</h4>
+      <h3>Past Shows</h3>
       <table class="table left-align" width="100%" id="past-events">
         <tr>
           <th>Date</th>
@@ -80,12 +81,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1, h2 {
-  font-size: 2rem;
-}
-h4 {
-  margin-top: 50px;
-  margin-bottom: 5px;
+h3 {
+  color: #2c3e50;
 }
 
 ul {
