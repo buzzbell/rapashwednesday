@@ -7,10 +7,7 @@
             <img class="album-cover" :src="blok.left_media" :alt="blok.left_media_title">
           </div>
         </div>
-        <div class="soundcloud-widget">
-          <div class="download-album-cover">
-            <img class="album-cover" :src="blok.right_media" :alt="blok.right_media_title">
-          </div>
+        <div class="music-embed" v-html="musicEmbed">
         </div>
       </div>
     </section>
@@ -18,8 +15,15 @@
 </template>
 
 <script>
+import marked from 'marked'
+
 export default {
-  props: ['blok']
+  props: ['blok'],
+  data () {
+    return {
+      musicEmbed: marked(this.blok.music_embed)
+    }
+  }
 }
 </script>
 
