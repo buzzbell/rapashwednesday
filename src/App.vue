@@ -2,7 +2,8 @@
   <div class="p2" id="app">
     <router-view></router-view>
     <div class='footer center p3'>
-      Contact:<br><a href="mailto:ashwednesdaymgmt@gmail.com">ashwednesdaymgmt@gmail.com</a>
+      <p><a href="mailto:ashwednesdaymgmt@gmail.com">ashwednesdaymgmt@gmail.com</a></p>
+      <p>All rights reserved &copy; {{currentYear}}</p>
     </div>
   </div>
 </template>
@@ -10,11 +11,16 @@
 <script>
 
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      currentYear: new Date().getFullYear()
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Arimo', sans-serif;
   color: #2c3e50;
@@ -57,5 +63,12 @@ p {
 }
 .banner-box > a {
   color: white;
+}
+
+.footer {
+  color: gray;
+  a {
+    color: gray;
+  }
 }
 </style>
