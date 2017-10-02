@@ -9,16 +9,23 @@
     <div v-editable="blok" class="class-times__inner">
       <h3>Upcoming Shows</h3>
       <table class="table left-align" width="100%" id="upcoming-events">
-        <tr>
-          <th>Date</th>
-          <th>Venue</th>
-          <th>Location</th>
-        </tr>
-        <tr v-for="event in this.upcomingEvents">
-          <td class="table-cell">{{ getEventDate(event.date) }}</td>
-          <td class="table-cell">{{ event.venue }}</td>
-          <td>{{ event.location }}</td>
-        </tr>
+        <span v-if="this.upcomingEvents.length > 0">
+          <tr>
+            <th>Date</th>
+            <th>Venue</th>
+            <th>Location</th>
+          </tr>
+          <tr v-for="event in this.upcomingEvents" >
+            <td class="table-cell">{{ getEventDate(event.date) }}</td>
+            <td class="table-cell">{{ event.venue }}</td>
+            <td>{{ event.location }}</td>
+          </tr>
+        </span>
+        <span class="no-upcoming-shows" v-else>
+          No upcoming shows currently.
+        </span>
+
+
       </table>
       <h3>Past Shows</h3>
       <table class="table left-align" width="100%" id="past-events">
@@ -50,7 +57,7 @@ export default {
   methods: {
     getUpcomingEvents (events) {
       let upcomingEvents = events.filter(function (event) {
-        let eventDate = new Date(event.date)
+        let eventDate = new Date(event.date.replace(/\s/, 'T'))
         let currentDate = new Date()
         return eventDate > currentDate
       })
@@ -58,21 +65,21 @@ export default {
     },
     getPastEvents (events) {
       let pastEvents = events.filter(function (event) {
-        let eventDate = new Date(event.date)
+        let eventDate = new Date(event.date.replace(/\s/, 'T'))
         let currentDate = new Date()
         return eventDate < currentDate
       })
       return pastEvents
     },
     getEventDate (eventDate) {
-      let dateTime = new Date(eventDate)
+      let dateTime = new Date(eventDate.replace(/\s/, 'T'))
       let month = dateTime.getMonth() + 1
       let date = dateTime.getDate()
       let year = dateTime.getFullYear()
       return `${month}/${date}/${year}`
     },
     isUpcomingEvent (event) {
-      let eventDate = new Date(event.date)
+      let eventDate = new Date(event.date.replace(/\s/, 'T'))
       let currentDate = new Date()
       return eventDate > currentDate
     }
