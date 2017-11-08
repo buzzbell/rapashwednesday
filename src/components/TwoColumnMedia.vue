@@ -4,7 +4,9 @@
       <div class="featured-album__items">
         <div class="download-album">
           <div class="download-album-cover">
-            <img class="album-cover" :src="blok.left_media" :alt="blok.left_media_title">
+            <a :href="blok.left_media_url">
+              <img class="album-cover" :src="blok.left_media" :alt="blok.left_media_title">
+            </a>
           </div>
         </div>
         <div class="music-embed" v-html="musicEmbed">
@@ -40,7 +42,7 @@ export default {
 
     @media (min-width: 700px) {
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-evenly;
     }
 
     img {
@@ -99,4 +101,3 @@ export default {
     }
   }
 </style>
-
